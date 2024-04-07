@@ -28,7 +28,7 @@ def dfs_algorithms(matrix, start=0, end=8):
                 set_of_bound.insert(0, p)
 
         if len(set_of_bound) == 0:
-            route = None
+            # route = None
             break
         open_point = set_of_bound[0]
         set_of_bound.pop(0)
