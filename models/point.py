@@ -58,9 +58,10 @@ def find_min_point_cost(arr_point_cost):
     return min(arr_point_cost)
 
 
-def print_route(route, start=0):
-    if route is None:
+def print_route(route, start=0, end=8):
+    if route[0].name != end:
         print("No results were found")
+        print(route)
         return
     p = route[0]
     while p.name != start:
