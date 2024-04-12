@@ -14,9 +14,9 @@ class Interface(QWidget):
         grid_layout = QGridLayout()
         matrix_label = QLabel("Bảng Điền Ma Trận:")
         grid_layout.addWidget(matrix_label, 0, 0)
-        # Tạo ma trận ô vuông 5x5
-        for i in range(5):
-            for j in range(5):
+        # Tạo ma trận ô vuông 9x9
+        for i in range(9):
+            for j in range(9):
                 btn = QPushButton()
                 grid_layout.addWidget(btn, i+1, j)
 
@@ -26,10 +26,10 @@ class Interface(QWidget):
         heuristic_layout = QVBoxLayout()
         heuristic_label = QLabel("Bảng Điền Heuristic:")
         heuristic_layout.addWidget(heuristic_label)
-        # Tạo các ô nhập giá trị heuristic, ví dụ 5x5
-        for i in range(5):
+        # Tạo các ô nhập giá trị heuristic
+        for i in range(9):
             row_layout = QHBoxLayout()
-            for j in range(5):
+            for j in range(9):
                 heuristic_edit = QLineEdit()
                 row_layout.addWidget(heuristic_edit)
             heuristic_layout.addLayout(row_layout)
