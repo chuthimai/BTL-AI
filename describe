@@ -1,1 +1,26 @@
-nhh
+1. Bảng Điền Ma Trận:
+  Sử dụng một lưới ô vuông hoặc ô chữ nhật để biểu diễn ma trận của đồ thị hoặc môi trường di chuyển.
+  Mỗi ô trong lưới thể hiện một ô trong ma trận.
+  Cho phép người dùng thêm và xóa các ô để tạo hoặc chỉnh sửa ma trận.
+  
+2. Bảng Điền Heuristic:
+  Hiển thị giá trị heuristic cho mỗi ô trong ma trận, giúp ước lượng khoảng cách từ mỗi ô đến đích.
+  Người dùng có thể chỉnh sửa giá trị heuristic của các ô nếu cần thiết.
+  
+3. Nút Cố Định và Đánh Dấu:
+  Cho phép người dùng chọn các ô để đặt các nhãn cho nút bắt đầu (S), nút kết thúc (G), và bất kỳ nút cố định nào khác cần thiết.
+  
+4. Di Chuyển Nút:
+  Cho phép người dùng chọn và di chuyển các nút trên bảng.
+  Các đường nối giữa các nút có thể được tự động vẽ dựa trên vị trí của chúng.
+  
+5. Thuật Toán và Nút Chức Năng:
+  Hiển thị các nút chức năng để người dùng chọn thuật toán cụ thể (DFS, IDA*, KNN hoặc Bayes).
+  Cung cấp nút để bắt đầu và dừng thuật toán nếu cần.
+  
+6. Hiển Thị Kết Quả:
+  Cung cấp một phần giao diện để hiển thị kết quả của thuật toán, chẳng hạn như đường đi tìm được hoặc kết quả phân loại.
+  
+7. Tính Năng Bổ Sung (tùy chọn):
+  Tính năng lưu và tải lại trạng thái của bảng để người dùng có thể lưu lại công việc hoặc thử nghiệm.
+  Hiển thị thông tin thêm về thuật toán đang được sử dụng và cách nó hoạt động để giúp người dùng hiểu rõ hơn về quá trình tìm đường đi hoặc phân loại.
