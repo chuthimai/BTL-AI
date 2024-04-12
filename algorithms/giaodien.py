@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QGridLayout, QPushButton, QLabel, QLineEdit, QTextEdit
-
+#Sử dụng thư viện PyQt5 
 class Interface(QWidget):
     def __init__(self):
         super().__init__()
