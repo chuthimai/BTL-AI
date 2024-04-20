@@ -61,4 +61,4 @@ def ida_star_algorithms(matrix, start=0, end=8, beta=2):
         i += beta
 
 
-print_route(ida_star_algorithms(matrix_example))
+ida_star_algorithms(matrix_example)
