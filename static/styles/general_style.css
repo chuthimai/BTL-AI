@@ -1,0 +1,36 @@
+nav {
+  background-color: #47bdec;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav a{
+    display: inline-block;
+    padding:10px;
+    font-size:20px;
+    color:white;
+    text-decoration:none;
+}
+
+nav a:hover{
+    background-color:#333;
+}
+
+input {
+    width: 40px;
+}
+
+.title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.label {
+    color: rgb(10,144,201);
+    font-weight: bold;
+}
+
+.image {
+    padding-top: 20px;
+}

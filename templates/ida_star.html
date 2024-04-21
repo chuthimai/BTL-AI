@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="../static/styles/general_style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    <nav>
+        <a href="bfs.html">BFS</a>
+        <a href="dfs.html">DFS</a>
+        <a href="a_star.html">A*</a>
+        <a href="ida_star.html">IDA*</a>
+        <a href="id3.html">ID3</a>
+        <a href="knn.html">KNN</a>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-5">
+                <div class="row">
+                    <form action="" method="get" class="matrix">
+                        <h3 class="title">Matrix Cost</h3>
+                        <table>
+                            <tr class="label">
+                                <td> </td>
+                                <td>S</td>
+                                <td>A</td>
+                                <td>B</td>
+                                <td>C</td>
+                                <td>D</td>
+                                <td>E</td>
+                                <td>F</td>
+                                <td>H</td>
+                                <td>G</td>
+                            </tr>
+                            <tr>
+                                <td class="label">S</td>
+                                <td><input type="number" id="00" name="00" value="0"/></td>
+                                <td><input type="number" id="01" name="01" value="0"/></td>
+                                <td><input type="number" id="02" name="02" value="0"/></td>
+                                <td><input type="number" id="03" name="03" value="0"/></td>
+                                <td><input type="number" id="04" name="04" value="0"/></td>
+                                <td><input type="number" id="05" name="05" value="0"/></td>
+                                <td><input type="number" id="06" name="06" value="0"/></td>
+                                <td><input type="number" id="07" name="07" value="0"/></td>
+                                <td><input type="number" id="08" name="08" value="0"/></td>
+                            </tr>
+                            <tr>
+                                <td class="label">A</td>
+                                <td><input type="number" id="10" name="10" value="0"/></td>
+                                <td><input type="number" id="11" name="11" value="0"/></td>
+                                <td><input type="number" id="12" name="12" value="0"/></td>
+                                <td><input type="number" id="13" name="13" value="0"/></td>
+                                <td><input type="number" id="14" name="14" value="0"/></td>
+                                <td><input type="number" id="15" name="15" value="0"/></td>
+                                <td><input type="number" id="16" name="16" value="0"/></td>
+                                <td><input type="number" id="17" name="17" value="0"/></td>
+                                <td><input type="number" id="18" name="18" value="0"/></td>
+                            </tr>
+                            <tr>
+                                <td class="label">B</td>
+                                <td><input type="number" id="20" name="20" value="0"/></td>
+                                <td><input type="number" id="21" name="21" value="0"/></td>
+                                <td><input type="number" id="22" name="22" value="0"/></td>
+                                <td><input type="number" id="23" name="23" value="0"/></td>
+                                <td><input type="number" id="24" name="24" value="0"/></td>
+                                <td><input type="number" id="25" name="25" value="0"/></td>
+                                <td><input type="number" id="26" name="26" value="0"/></td>
+                                <td><input type="number" id="27" name="27" value="0"/></td>
+                                <td><input type="number" id="28" name="28" value="0"/></td>
+                            </tr>
+                            <tr>
+                                <td class="label">C</td>
+                                <td><input type="number" id="30" name="30" value="0"/></td>
+                                <td><input type="number" id="31" name="31" value="0"/></td>
+                                <td><input type="number" id="32" name="32" value="0"/></td>
+                                <td><input type="number" id="33" name="33" value="0"/></td>
+                                <td><input type="number" id="34" name="34" value="0"/></td>
+                                <td><input type="number" id="35" name="35" value="0"/></td>
+                                <td><input type="number" id="36" name="36" value="0"/></td>
+                                <td><input type="number" id="37" name="37" value="0"/></td>
+                                <td><input type="number" id="38" name="38" value="0"/></td>
+                            </tr>
+                            <tr>
+                                <td class="label">D</td>
+                                <td><input type="number" id="40" name="40" value="0"/></td>
+                                <td><input type="number" id="41" name="41" value="0"/></td>
+                                <td><input type="number" id="42" name="42" value="0"/></td>
+                                <td><input type="number" id="43" name="43" value="0"/></td>
+                                <td><input type="number" id="44" name="44" value="0"/></td>
+                                <td><input type="number" id="45" name="45" value="0"/></td>
+                                <td><input type="number" id="46" name="46" value="0"/></td>
+                                <td><input type="number" id="47" name="47" value="0"/></td>
+                                <td><input type="number" id="48" name="48" value="0"/></td>
+                            </tr>
+                            <tr>
+                                <td class="label">E</td>
+                                <td><input type="number" id="50" name="50" value="0"/></td>
+                                <td><input type="number" id="51" name="51" value="0"/></td>
+                                <td><input type="number" id="52" name="52" value="0"/></td>
+                                <td><input type="number" id="53" name="53" value="0"/></td>
+                                <td><input type="number" id="54" name="54" value="0"/></td>
+                                <td><input type="number" id="55" name="55" value="0"/></td>
+                                <td><input type="number" id="56" name="56" value="0"/></td>
+                                <td><input type="number" id="57" name="57" value="0"/></td>
+                                <td><input type="number" id="58" name="58" value="0"/></td>
+                            </tr>
+                            <tr>
+                                <td class="label">F</td>
+                                <td><input type="number" id="60" name="60" value="0"/></td>
+                                <td><input type="number" id="61" name="61" value="0"/></td>
+                                <td><input type="number" id="62" name="62" value="0"/></td>
+                                <td><input type="number" id="63" name="63" value="0"/></td>
+                                <td><input type="number" id="64" name="64" value="0"/></td>
+                                <td><input type="number" id="65" name="65" value="0"/></td>
+                                <td><input type="number" id="66" name="66" value="0"/></td>
+                                <td><input type="number" id="67" name="67" value="0"/></td>
+                                <td><input type="number" id="68" name="68" value="0"/></td>
+                            </tr>
+                            <tr>
+                                <td class="label">H</td>
+                                <td><input type="number" id="70" name="70" value="0"/></td>
+                                <td><input type="number" id="71" name="71" value="0"/></td>
+                                <td><input type="number" id="72" name="72" value="0"/></td>
+                                <td><input type="number" id="73" name="73" value="0"/></td>
+                                <td><input type="number" id="74" name="74" value="0"/></td>
+                                <td><input type="number" id="75" name="75" value="0"/></td>
+                                <td><input type="number" id="76" name="76" value="0"/></td>
+                                <td><input type="number" id="77" name="77" value="0"/></td>
+                                <td><input type="number" id="78" name="78" value="0"/></td>
+                            </tr>
+                            <tr>
+                                <td class="label">G</td>
+                                <td><input type="number" id="80" name="80" value="0"/></td>
+                                <td><input type="number" id="81" name="81" value="0"/></td>
+                                <td><input type="number" id="82" name="82" value="0"/></td>
+                                <td><input type="number" id="83" name="83" value="0"/></td>
+                                <td><input type="number" id="84" name="84" value="0"/></td>
+                                <td><input type="number" id="85" name="85" value="0"/></td>
+                                <td><input type="number" id="86" name="86" value="0"/></td>
+                                <td><input type="number" id="87" name="87" value="0"/></td>
+                                <td><input type="number" id="88" name="88" value="0"/></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <div>
+                    <h3 class="title">
+                        Heuristic
+                    </h3>
+                    <table>
+                        <tr>
+                            <td class="label">
+                                S
+                            </td>
+                            <td><input type="number" id="h0" name="h0" value="0"/></td>
+                        </tr>
+                        <tr>
+                            <td class="label">
+                                A
+                            </td>
+                            <td><input type="number" id="h1" name="h1" value="0"/></td>
+                        </tr>
+                        <tr>
+                            <td class="label">
+                                B
+                            </td>
+                            <td><input type="number" id="h2" name="h2" value="0"/></td>
+                        </tr>
+                        <tr>
+                            <td class="label">
+                                C
+                            </td>
+                            <td><input type="number" id="h3" name="h3" value="0"/></td>
+                        </tr>
+                        <tr>
+                            <td class="label">
+                                D
+                            </td>
+                            <td><input type="number" id="h4" name="h4" value="0"/></td>
+                        </tr>
+                        <tr>
+                            <td class="label">
+                                E
+                            </td>
+                            <td><input type="number" id="h5" name="h5" value="0"/></td>
+                        </tr>
+                        <tr>
+                            <td class="label">
+                                F
+                            </td>
+                            <td><input type="number" id="h6" name="h6" value="0"/></td>
+                        </tr>
+                        <tr>
+                            <td class="label">
+                                H
+                            </td>
+                            <td><input type="number" id="h7" name="h7" value="0"/></td>
+                        </tr>
+                        <tr>
+                            <td class="label">
+                                G
+                            </td>
+                            <td><input type="number" id="h8" name="h8" value="0"/></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div class="col-7 image">
+                <div class="position-fixed">
+                    <img src="../static/images/what-is-graphs-in-data-structure.avif" class="img-fluid">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
