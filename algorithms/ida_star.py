@@ -2,19 +2,19 @@ from models.point import Point, print_route, PointCost
 import matplotlib.pyplot as plt
 from models.draw_point import draw_point
 
-matrix_example = [
-    [0, 2, 3, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 3, 0, 0, 0, 0],
-    [0, 0, 0, 3, 1, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 2, 0, 0, 0],
-    [0, 0, 0, 1, 0, 0, 3, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [0, 0, 0, 0, 0, 0, 0, 0, 2],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0]
-]
-
-# heu = [6, 4, 4, 3, 4, 1, 1, 0, 0]
+# matrix_example = [
+#     [0, 2, 3, 0, 0, 0, 0, 0, 0],
+#     [0, 0, 0, 0, 3, 0, 0, 0, 0],
+#     [0, 0, 0, 3, 1, 0, 0, 0, 0],
+#     [0, 0, 0, 0, 0, 2, 0, 0, 0],
+#     [0, 0, 0, 1, 0, 0, 3, 0, 0],
+#     [0, 0, 0, 0, 0, 0, 0, 0, 1],
+#     [0, 0, 0, 0, 0, 0, 0, 0, 2],
+#     [0, 0, 0, 0, 0, 0, 0, 0, 0],
+#     [0, 0, 0, 0, 0, 0, 0, 0, 0]
+# ]
+#
+# heuristic = [6, 4, 4, 3, 4, 1, 1, 0, 0]
 
 
 def ida_star_step(matrix, heu, start=0, end=8, i=8):
@@ -23,7 +23,7 @@ def ida_star_step(matrix, heu, start=0, end=8, i=8):
     route = []
     open_point = PointCost(Point(start, h=heu[start]), c=0)
 
-    if sum(matrix[8]) == 0:
+    if sum([r[8] for r in matrix]) == 0:
         return {
             'check': False,
             'situation': f"Not found result",
@@ -59,7 +59,7 @@ def ida_star_step(matrix, heu, start=0, end=8, i=8):
             print(f"cost = {route[0].f}")
             return {
                 'check': True,
-                'situation': f"i = {i}; route = {r}\tcost = {route[0].f}",
+                'situation': f"i = {i}; route = {r} ➦ cost = {route[0].f}",
             }
 
     print(f"i = {i}; route = {route}")
@@ -81,4 +81,4 @@ def ida_star_algorithms(matrix, heu, start=0, end=8, beta=2):
     return all_situations
 
 
-# print(ida_star_algorithms(matrix_example))
+# print(ida_star_algorithms(matrix_example, heu=heuristic))
