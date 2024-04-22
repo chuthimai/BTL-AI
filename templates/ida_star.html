@@ -9,22 +9,22 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
     <nav>
-        <a href="bfs.html">BFS</a>
-        <a href="dfs.html">DFS</a>
-        <a href="a_star.html">A*</a>
-        <a href="ida_star.html" class="select">IDA*</a>
-        <a href="id3.html">ID3</a>
-        <a href="knn.html">KNN</a>
+        <a href="{{url_for('bfs')}}">BFS</a>
+        <a href="{{url_for('dfs')}}">DFS</a>
+        <a href="{{url_for('a_star')}}">A*</a>
+        <a href="{{url_for('ida_star')}}" class="select">IDA*</a>
+        <a href="{{url_for('id3')}}">ID3</a>
+        <a href="{{url_for('knn')}}">KNN</a>
     </nav>
 
     <div class="container">
         <div class="row">
             <div class="col-5">
-                <div class="row submit">
-                    <input type="submit" value="Show Route">
-                </div>
                 <div class="row">
-                    <form action="" method="post" class="matrix">
+                    <form action="/ida*" method="post" class="matrix">
+                        <div class="row submit">
+                            <input type="submit" value="Show Route">
+                        </div>
                         <h3 class="title">Matrix Cost</h3>
                         <table>
                             <tr class="label">
@@ -148,74 +148,77 @@
                                 <td><input type="number" id="88" name="88" value="0"/></td>
                             </tr>
                         </table>
+                        <div>
+                            <h3 class="title">
+                                Heuristic
+                            </h3>
+                            <table>
+                                <tr>
+                                    <td class="label">
+                                        S
+                                    </td>
+                                    <td><input type="number" id="h0" name="h0" value="0"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="label">
+                                        A
+                                    </td>
+                                    <td><input type="number" id="h1" name="h1" value="0"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="label">
+                                        B
+                                    </td>
+                                    <td><input type="number" id="h2" name="h2" value="0"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="label">
+                                        C
+                                    </td>
+                                    <td><input type="number" id="h3" name="h3" value="0"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="label">
+                                        D
+                                    </td>
+                                    <td><input type="number" id="h4" name="h4" value="0"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="label">
+                                        E
+                                    </td>
+                                    <td><input type="number" id="h5" name="h5" value="0"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="label">
+                                        F
+                                    </td>
+                                    <td><input type="number" id="h6" name="h6" value="0"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="label">
+                                        H
+                                    </td>
+                                    <td><input type="number" id="h7" name="h7" value="0"/></td>
+                                </tr>
+                                <tr>
+                                    <td class="label">
+                                        G
+                                    </td>
+                                    <td><input type="number" id="h8" name="h8" value="0"/></td>
+                                </tr>
+                            </table>
+                        </div>
                     </form>
                 </div>
-                <div>
-                    <h3 class="title">
-                        Heuristic
-                    </h3>
-                    <table>
-                        <tr>
-                            <td class="label">
-                                S
-                            </td>
-                            <td><input type="number" id="h0" name="h0" value="0"/></td>
-                        </tr>
-                        <tr>
-                            <td class="label">
-                                A
-                            </td>
-                            <td><input type="number" id="h1" name="h1" value="0"/></td>
-                        </tr>
-                        <tr>
-                            <td class="label">
-                                B
-                            </td>
-                            <td><input type="number" id="h2" name="h2" value="0"/></td>
-                        </tr>
-                        <tr>
-                            <td class="label">
-                                C
-                            </td>
-                            <td><input type="number" id="h3" name="h3" value="0"/></td>
-                        </tr>
-                        <tr>
-                            <td class="label">
-                                D
-                            </td>
-                            <td><input type="number" id="h4" name="h4" value="0"/></td>
-                        </tr>
-                        <tr>
-                            <td class="label">
-                                E
-                            </td>
-                            <td><input type="number" id="h5" name="h5" value="0"/></td>
-                        </tr>
-                        <tr>
-                            <td class="label">
-                                F
-                            </td>
-                            <td><input type="number" id="h6" name="h6" value="0"/></td>
-                        </tr>
-                        <tr>
-                            <td class="label">
-                                H
-                            </td>
-                            <td><input type="number" id="h7" name="h7" value="0"/></td>
-                        </tr>
-                        <tr>
-                            <td class="label">
-                                G
-                            </td>
-                            <td><input type="number" id="h8" name="h8" value="0"/></td>
-                        </tr>
-                    </table>
-                </div>
-
             </div>
             <div class="col-7 image">
                 <div class="position-fixed">
-                    <img src="../static/images/init.png" class="img-fluid">
+                    <img src="{{ image }}" class="img-fluid">
+                    <hr>
+                    {% for step in result: %}
+                        <h6>{{ step }}</h6>
+                    {% endfor %}
                 </div>
             </div>
 

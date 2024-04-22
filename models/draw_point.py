@@ -13,7 +13,7 @@ def draw_point(plt):
             alpha=0.8,
         )
 
-    plt.xlim([-1, 15])
+    plt.xlim([-1, 18])
     plt.ylim([-10, 10])
     plt.legend()
     plt.title("Graph")

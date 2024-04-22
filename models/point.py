@@ -63,8 +63,8 @@ from models.draw_route import draw_route
 
 def print_route(route, start=0, end=8, plt=None):
     text = ""
-    if route == []:
-        return f""
+    if route == [] or route is None:
+        return ""
     if route[0].name != end:
         print("No results were found")
         print(route)

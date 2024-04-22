@@ -1,0 +1,82 @@
+from flask import Flask, render_template, request
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+
+from algorithms.dfs import dfs_algorithms
+from algorithms.ida_star import ida_star_algorithms
+from models.draw_point import draw_point
+from models.get_data import get_matrix, get_heuristic
+from models.point import print_route
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+
+@app.route('/dfs', methods=["POST", "GET"])
+def dfs():
+    image = "../static/images/init.png"
+    result = ""
+    if request.method == "POST":
+        image = "../static/images/dfs.png"
+        matrix = get_matrix(request)
+        plt.close()
+        draw_point(plt=plt)
+        result = print_route(dfs_algorithms(matrix), plt=plt)
+        plt.savefig("./static/images/dfs.png")
+
+    return render_template(
+        'dfs.html',
+        image=image,
+        result=result,
+    )
+
+
+
+@app.route('/ida*', methods=["POST", "GET"])
+def ida_star():
+    image = "../static/images/init.png"
+    result = ""
+    if request.method == "POST":
+        image = "../static/images/ida_star.png"
+        matrix = get_matrix(request)
+        heu = get_heuristic(request)
+        result = ida_star_algorithms(matrix, heu)
+        print(result)
+
+    return render_template(
+            'ida_star.html',
+            image=image,
+            result=result,
+        )
+
+
+@app.route('/knn')
+def knn():
+    return render_template('knn.html')
+
+
+#-------------------------------------------------------------#
+
+
+@app.route('/bfs')
+def bfs():
+    return render_template('bfs.html')
+
+
+@app.route('/a*')
+def a_star():
+    return render_template('a_star.html')
+
+
+@app.route('/id3')
+def id3():
+    return render_template('id3.html')
+
+
+if __name__ == "__main__":
+    app.run(debug=True)

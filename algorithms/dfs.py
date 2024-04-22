@@ -40,9 +40,9 @@ def dfs_algorithms(matrix, start=0, end=8):
 
     return route
 
-draw_point(plt=plt)
-txt = print_route(dfs_algorithms(matrix_example), plt=plt)
-plt.savefig("../static/images/dfs.png")
-print(txt)
+# draw_point(plt=plt)
+# txt = print_route(dfs_algorithms(matrix_example), plt=plt)
+# plt.savefig("../static/images/dfs.png")
+# print(txt)
 
 

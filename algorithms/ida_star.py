@@ -14,14 +14,20 @@ matrix_example = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0]
 ]
 
-h = [6, 4, 4, 3, 4, 1, 1, 0, 0]
+# heu = [6, 4, 4, 3, 4, 1, 1, 0, 0]
 
 
-def ida_star_step(matrix, start=0, end=8, i=8):
+def ida_star_step(matrix, heu, start=0, end=8, i=8):
     set_of_bound = []
     visited = [0, 0, 0, 0, 0, 0, 0, 0, 0]
     route = []
-    open_point = PointCost(Point(start, h=h[start]), c=0)
+    open_point = PointCost(Point(start, h=heu[start]), c=0)
+
+    if sum(matrix[8]) == 0:
+        return {
+            'check': False,
+            'situation': f"Not found result",
+        }
 
     loop = True
     if open_point.f > i:
@@ -34,12 +40,12 @@ def ida_star_step(matrix, start=0, end=8, i=8):
         for j in range(8, -1, -1):
             if visited[j] == 0 and matrix[open_point.point.name][j] > 0:
                 g = open_point.c + matrix[open_point.point.name][j]
-                p = PointCost(Point(name=j, before=open_point.point, h=h[j]), c=g)
+                p = PointCost(Point(name=j, before=open_point.point, h=heu[j]), c=g)
                 if p.f <= i:
                     set_of_bound.insert(0, p)
 
         if len(set_of_bound) == 0:
-            # route = None
+            route = []
             break
         open_point = set_of_bound[0]
         set_of_bound.pop(0)
@@ -49,7 +55,7 @@ def ida_star_step(matrix, start=0, end=8, i=8):
             route.insert(0, open_point)
             print(f"i = {i}; route = ", end='')
             r = print_route(list(map(lambda point_cost: point_cost.point, route)), plt=plt)
-            plt.savefig("../static/images/ida_star.png")
+            plt.savefig("./static/images/ida_star.png")
             print(f"cost = {route[0].f}")
             return {
                 'check': True,
@@ -63,11 +69,11 @@ def ida_star_step(matrix, start=0, end=8, i=8):
     }
 
 
-def ida_star_algorithms(matrix, start=0, end=8, beta=2):
+def ida_star_algorithms(matrix, heu, start=0, end=8, beta=2):
     i = beta
     all_situations = []
     while True:
-        situation = ida_star_step(matrix, start=start, end=end, i=i)
+        situation = ida_star_step(matrix, heu, start=start, end=end, i=i)
         all_situations.append(situation['situation'])
         if situation['check']:
             break
@@ -75,4 +81,4 @@ def ida_star_algorithms(matrix, start=0, end=8, beta=2):
     return all_situations
 
 
-print(ida_star_algorithms(matrix_example))
+# print(ida_star_algorithms(matrix_example))

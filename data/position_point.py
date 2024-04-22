@@ -43,13 +43,13 @@ position_points = [
     },
     {
         "label": "H",
-        "x": 9,
+        "x": 12,
         "y": 0,
         "color": "#00bfff",
     },
     {
         "label": "G",
-        "x": 12,
+        "x": 15,
         "y": 0,
         "color": "#ffd700",
     },
