@@ -1,4 +1,6 @@
 from models.point import Point, print_route, PointCost
+import matplotlib.pyplot as plt
+from models.draw_point import draw_point
 
 matrix_example = [
     [0, 2, 3, 0, 0, 0, 0, 0, 0],
@@ -43,22 +45,34 @@ def ida_star_step(matrix, start=0, end=8, i=8):
         set_of_bound.pop(0)
 
         if open_point.point.name == end:
+            draw_point(plt)
             route.insert(0, open_point)
             print(f"i = {i}; route = ", end='')
-            print_route(list(map(lambda point_cost: point_cost.point, route)))
+            r = print_route(list(map(lambda point_cost: point_cost.point, route)), plt=plt)
+            plt.savefig("../static/images/ida_star.png")
             print(f"cost = {route[0].f}")
-            return True
+            return {
+                'check': True,
+                'situation': f"i = {i}; route = {r}\tcost = {route[0].f}",
+            }
 
     print(f"i = {i}; route = {route}")
-    return False
+    return {
+        'check': False,
+        'situation': f"i = {i}; route = {route}"
+    }
 
 
 def ida_star_algorithms(matrix, start=0, end=8, beta=2):
     i = beta
+    all_situations = []
     while True:
-        if ida_star_step(matrix, start=start, end=end, i=i):
+        situation = ida_star_step(matrix, start=start, end=end, i=i)
+        all_situations.append(situation['situation'])
+        if situation['check']:
             break
         i += beta
+    return all_situations
 
 
-ida_star_algorithms(matrix_example)
+print(ida_star_algorithms(matrix_example))
