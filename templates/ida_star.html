@@ -216,12 +216,13 @@
                 <div class="position-fixed">
                     <img src="{{ image }}" class="img-fluid">
                     <hr>
-                    {% for step in result: %}
-                        <h6>{{ step }}</h6>
-                    {% endfor %}
+                    <div class="scrollable">
+                        {% for step in result: %}
+                            <h6>{{ step }}</h6>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 

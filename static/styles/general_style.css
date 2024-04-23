@@ -44,3 +44,11 @@ input {
 .submit {
     padding: 20px;
 }
+
+.scrollable {
+    width: auto;
+    height: 100px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    padding: 10px;
+}

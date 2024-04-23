@@ -44,6 +44,7 @@ def ida_star():
     if request.method == "POST":
         image = "../static/images/ida_star.png"
         matrix = get_matrix(request)
+        plt.close()
         heu = get_heuristic(request)
         result = ida_star_algorithms(matrix, heu)
         print(result)
