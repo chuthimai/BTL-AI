@@ -17,17 +17,129 @@
         <a href="{{url_for('knn')}}" class="select">KNN</a>
     </nav>
 
-    <div class="container">
+    <div class="container position-fixed m-3">
         <div class="row">
-            <div class="col-3">
-                Data Sample
+            <div class="col-6 matrix">
+                <div class="scrollable" style="height: 90%; width: 100%;">
+                    <div class="row">
+                        <h3>Type data:</h3>
+                        <div class="scrollable">
+                            <table class="table table-hover">
+                                <tr>
+                                    <td class="label">Type</td>
+                                    <td class="label">Glass</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>building windows float processed</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>building windows non float processed</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>vehicle windows float processed</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>vehicle windows non float processed</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>containers</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>tableware</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>headlamps</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h3>Data Train</h3>
+                        <div class="scrollable">
+                            <table class="table table-hover">
+                                <tr>
+                                    <td class="label">RI</td>
+                                    <td class="label">Na</td>
+                                    <td class="label">Mg</td>
+                                    <td class="label">Al</td>
+                                    <td class="label">Si</td>
+                                    <td class="label">Ba</td>
+                                    <td class="label">Fe</td>
+                                    <td class="label">Type</td>
+                                </tr>
+                                <tr>
+                                    <td>dlks</td>
+                                    <td>dlks</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <h3>Data Test</h3>
+                        <div class="scrollable">
+                            <table class="table table-hover">
+                                <tr >
+                                    <td class="label">RI</td>
+                                    <td class="label">Na</td>
+                                    <td class="label">Mg</td>
+                                    <td class="label">Al</td>
+                                    <td class="label">Si</td>
+                                    <td class="label">Ba</td>
+                                    <td class="label">Fe</td>
+                                    <td class="label">Type</td>
+                                </tr>
+                                <tr>
+                                    <td>dlks</td>
+
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <form action="/knn" method="post">
+                            <h3>Input Data</h3>
+                            <div class="scrollable" style="height: 150px;">
+                                <table class="table table-hover">
+                                    <tr>
+                                        <td class="label">RI</td>
+                                        <td class="label">Na</td>
+                                        <td class="label">Mg</td>
+                                        <td class="label">Al</td>
+                                        <td class="label">Si</td>
+                                        <td class="label">Ba</td>
+                                        <td class="label">Fe</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="number" value="0.0" id="ri" name="ri" class="knn_input"></td>
+                                        <td><input type="number" value="0.0" id="na" name="na" class="knn_input"></td>
+                                        <td><input type="number" value="0.0" id="mg" name="mg" class="knn_input"></td>
+                                        <td><input type="number" value="0.0" id="al" name="al" class="knn_input"></td>
+                                        <td><input type="number" value="0.0" id="si" name="si" class="knn_input"></td>
+                                        <td><input type="number" value="0.0" id="ba" name="ba" class="knn_input"></td>
+                                        <td><input type="number" value="0.0" id="fe" name="fe" class="knn_input"></td>
+
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="row submit">
+                                <input type="submit" value="Show Result">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
             </div>
-            <div class="col-2">
-                InputData
-            </div>
-            <div class="col-7 image">
+
+            <div class="col-6 image">
                 <div class="position-fixed">
-                    <img src="../static/images/what-is-graphs-in-data-structure.avif" class="img-fluid">
+                    <img src="../static/images/knn.png" class="img-fluid">
+                    <hr>
+                    <h3>Type glass: {{}}</h3>
                 </div>
             </div>
 

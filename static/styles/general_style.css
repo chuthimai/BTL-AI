@@ -27,6 +27,10 @@ input {
     width: 40px;
 }
 
+table {
+    text-align: center;
+}
+
 .title {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -35,6 +39,7 @@ input {
 .label {
     color: rgb(10,144,201);
     font-weight: bold;
+    text-align: center;
 }
 
 .image {
@@ -46,9 +51,21 @@ input {
 }
 
 .scrollable {
-    width: auto;
     height: 100px;
     overflow-y: scroll;
     border: 1px solid #ccc;
     padding: 10px;
+}
+
+.matrix > .scrollable {
+    width: 100px;
+    height: 300px;
+    overflow-y: scroll;
+    overflow-x: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.knn_input {
+    width: 60px;
 }

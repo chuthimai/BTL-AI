@@ -1,4 +1,7 @@
 from flask import Flask, render_template, request
+import numpy as np
+import pandas as pd
+import joblib
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -58,7 +61,16 @@ def ida_star():
 
 @app.route('/knn')
 def knn():
-    return render_template('knn.html')
+    train_data = pd.read_csv("./data/knn/train_data.csv")
+    test_data = pd.read_csv("./data/knn/test_data.csv")
+    result = None
+
+    return render_template(
+        'knn.html',
+        train_data=train_data,
+        test_data=test_data,
+        result=result,
+    )
 
 
 #-------------------------------------------------------------#
