@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import numpy as np
+import sklearn
 import pandas as pd
 import joblib
 import matplotlib
@@ -9,7 +10,7 @@ import matplotlib.pyplot as plt
 from algorithms.dfs import dfs_algorithms
 from algorithms.ida_star import ida_star_algorithms
 from models.draw_point import draw_point
-from models.get_data import get_matrix, get_heuristic
+from models.get_data import get_matrix, get_heuristic, get_data_knn
 from models.point import print_route
 
 app = Flask(__name__)
@@ -39,7 +40,6 @@ def dfs():
     )
 
 
-
 @app.route('/ida*', methods=["POST", "GET"])
 def ida_star():
     image = "../static/images/init.png"
@@ -59,16 +59,25 @@ def ida_star():
         )
 
 
-@app.route('/knn')
+@app.route('/knn', methods=["POST", "GET"])
 def knn():
     train_data = pd.read_csv("./data/knn/train_data.csv")
     test_data = pd.read_csv("./data/knn/test_data.csv")
     result = None
 
+    if request.method == "POST":
+
+        # Load mô hình và scaler
+        loaded_model = joblib.load('./data/knn/knn_model.pkl')
+        loaded_scaler = joblib.load('./data/knn/scaler.pkl')
+        data_input = np.array(get_data_knn(request))
+        data_input_scaled = loaded_scaler.transform(data_input)
+        result = loaded_model.predict(data_input_scaled)
+
     return render_template(
         'knn.html',
-        train_data=train_data,
-        test_data=test_data,
+        train_data=train_data.to_html(classes="table table-hover"),
+        test_data=test_data.to_html(classes="table table-hover"),
         result=result,
     )
 

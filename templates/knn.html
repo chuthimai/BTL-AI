@@ -63,41 +63,11 @@
                     <div class="row">
                         <h3>Data Train</h3>
                         <div class="scrollable">
-                            <table class="table table-hover">
-                                <tr>
-                                    <td class="label">RI</td>
-                                    <td class="label">Na</td>
-                                    <td class="label">Mg</td>
-                                    <td class="label">Al</td>
-                                    <td class="label">Si</td>
-                                    <td class="label">Ba</td>
-                                    <td class="label">Fe</td>
-                                    <td class="label">Type</td>
-                                </tr>
-                                <tr>
-                                    <td>dlks</td>
-                                    <td>dlks</td>
-                                </tr>
-                            </table>
+                            {{ train_data | safe}}
                         </div>
                         <h3>Data Test</h3>
                         <div class="scrollable">
-                            <table class="table table-hover">
-                                <tr >
-                                    <td class="label">RI</td>
-                                    <td class="label">Na</td>
-                                    <td class="label">Mg</td>
-                                    <td class="label">Al</td>
-                                    <td class="label">Si</td>
-                                    <td class="label">Ba</td>
-                                    <td class="label">Fe</td>
-                                    <td class="label">Type</td>
-                                </tr>
-                                <tr>
-                                    <td>dlks</td>
-
-                                </tr>
-                            </table>
+                            {{ test_data | safe}}
                         </div>
                     </div>
                     <div class="row">
@@ -115,13 +85,13 @@
                                         <td class="label">Fe</td>
                                     </tr>
                                     <tr>
-                                        <td><input type="number" value="0.0" id="ri" name="ri" class="knn_input"></td>
-                                        <td><input type="number" value="0.0" id="na" name="na" class="knn_input"></td>
-                                        <td><input type="number" value="0.0" id="mg" name="mg" class="knn_input"></td>
-                                        <td><input type="number" value="0.0" id="al" name="al" class="knn_input"></td>
-                                        <td><input type="number" value="0.0" id="si" name="si" class="knn_input"></td>
-                                        <td><input type="number" value="0.0" id="ba" name="ba" class="knn_input"></td>
-                                        <td><input type="number" value="0.0" id="fe" name="fe" class="knn_input"></td>
+                                        <td><input type="number" value="0.0" id="ri" step="any" name="ri" class="knn_input"></td>
+                                        <td><input type="number" value="0.0" id="na" step="any" name="na" class="knn_input"></td>
+                                        <td><input type="number" value="0.0" id="mg" step="any" name="mg" class="knn_input"></td>
+                                        <td><input type="number" value="0.0" id="al" step="any" name="al" class="knn_input"></td>
+                                        <td><input type="number" value="0.0" id="si" step="any" name="si" class="knn_input"></td>
+                                        <td><input type="number" value="0.0" id="ba" step="any" name="ba" class="knn_input"></td>
+                                        <td><input type="number" value="0.0" id="fe" step="any" name="fe" class="knn_input"></td>
 
                                     </tr>
                                 </table>
@@ -139,10 +109,9 @@
                 <div class="position-fixed">
                     <img src="../static/images/knn.png" class="img-fluid">
                     <hr>
-                    <h3>Type glass: {{}}</h3>
+                    <h3>Type glass: {{ result }}</h3>
                 </div>
             </div>
-
         </div>
     </div>
 
