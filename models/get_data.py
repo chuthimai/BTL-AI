@@ -25,4 +25,4 @@ def get_data_knn(request: Request):
     data = request.form.to_dict()
     for i in ['ri', 'na', 'mg', 'al', 'si', 'ba', 'fe']:
         data_input.append(float(data[i]))
-    return data_input
+    return tuple(data_input)

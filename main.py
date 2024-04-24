@@ -63,14 +63,15 @@ def ida_star():
 def knn():
     train_data = pd.read_csv("./data/knn/train_data.csv")
     test_data = pd.read_csv("./data/knn/test_data.csv")
-    result = None
+    result = [None]
 
     if request.method == "POST":
+        cols = ['RI', 'Na', 'Mg', 'Al', 'Si', 'Ba', 'Fe']
 
         # Load mô hình và scaler
         loaded_model = joblib.load('./data/knn/knn_model.pkl')
         loaded_scaler = joblib.load('./data/knn/scaler.pkl')
-        data_input = np.array(get_data_knn(request))
+        data_input = pd.DataFrame(data=[get_data_knn(request)], columns=cols)
         data_input_scaled = loaded_scaler.transform(data_input)
         result = loaded_model.predict(data_input_scaled)
 
@@ -78,7 +79,7 @@ def knn():
         'knn.html',
         train_data=train_data.to_html(classes="table table-hover"),
         test_data=test_data.to_html(classes="table table-hover"),
-        result=result,
+        result=result[0],
     )
 
 
