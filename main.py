@@ -63,7 +63,7 @@ def ida_star():
 def knn():
     train_data = pd.read_csv("./data/knn/train_data.csv")
     test_data = pd.read_csv("./data/knn/test_data.csv")
-    result = None
+    result = [None]
 
     if request.method == "POST":
         cols = ['RI', 'Na', 'Mg', 'Al', 'Si', 'Ba', 'Fe']
