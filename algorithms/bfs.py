@@ -1,4 +1,6 @@
 from models.point import Point, print_route
+import matplotlib.pyplot as plt
+from models.draw_point import draw_point
 
 matrix_example = [
     [0, 1, 1, 1, 0, 1, 0, 0, 0],
@@ -40,5 +42,8 @@ def bfs_algorithms(matrix, start=0, end=8):
 
     return route
 
+draw_point(plt=plt)
 
-print_route(bfs_algorithms(matrix))
+txt = print_route(dfs_algorithms(matrix_example), plt=plt)
+plt.savefig("../static/images/bfs.png")
+print(txt)
