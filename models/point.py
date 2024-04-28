@@ -34,7 +34,7 @@ class PointCost:
         except ValueError:
             return None
 
-    def __ge__(self, other: 'PointCost'):
+    def __gt__(self, other: 'PointCost'):
         if self.f > other.f:
             return True
         elif self.f == other.f:
@@ -42,11 +42,11 @@ class PointCost:
                 return True
         return False
 
-    def __le__(self, other: 'PointCost'):
+    def __lt__(self, other: 'PointCost'):
         if self.f < other.f:
             return True
         elif self.f == other.f:
-            if self.point.name < other.point.name:
+            if self.point.name <= other.point.name:
                 return True
         return False
 
