@@ -58,14 +58,27 @@ def find_min_point_cost(arr_point_cost):
     return min(arr_point_cost)
 
 
-def print_route(route, start=0, end=8):
+from models.draw_route import draw_route
+
+
+def print_route(route, start=0, end=8, plt=None):
+    text = ""
+    if route == [] or route is None:
+        return ""
     if route[0].name != end:
         print("No results were found")
         print(route)
-        return
+        text += f"No results were found \n {route}"
+        return text
     p = route[0]
     while p.name != start:
         print(ref[p.name], end="<-")
+        text += f"{ref[p.name]}<-"
         pos = p.before.find_point(route)
+        if plt is not None:
+            draw_route(plt, p.name, p.before.name)
         p = route[pos]
     print(ref[p.name])
+    text += f"{ref[p.name]}"
+    return text
+
