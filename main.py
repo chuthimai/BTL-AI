@@ -15,6 +15,19 @@ from models.point import print_route
 
 app = Flask(__name__)
 
+matrix = [
+    [0, 2, 3, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 3, 0, 0, 0, 0],
+    [0, 0, 0, 3, 1, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 1, 0, 0, 3, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 2],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0]
+]
+
+heu = [6, 4, 4, 3, 4, 1, 1, 0, 0]
 
 @app.route('/')
 def home():
@@ -23,6 +36,7 @@ def home():
 
 @app.route('/dfs', methods=["POST", "GET"])
 def dfs():
+    global matrix
     image = "../static/images/init.png"
     result = ""
     if request.method == "POST":
@@ -37,11 +51,13 @@ def dfs():
         'dfs.html',
         image=image,
         result=result,
+        matrix=matrix,
     )
 
 
 @app.route('/ida*', methods=["POST", "GET"])
 def ida_star():
+    global matrix, heu
     image = "../static/images/init.png"
     result = ""
     if request.method == "POST":
@@ -56,6 +72,8 @@ def ida_star():
             'ida_star.html',
             image=image,
             result=result,
+            matrix=matrix,
+            h=heu
         )
 
 
@@ -88,12 +106,19 @@ def knn():
 
 @app.route('/bfs')
 def bfs():
-    return render_template('bfs.html')
+    return render_template(
+        'bfs.html',
+        matrix=matrix,
+    )
 
 
 @app.route('/a*')
 def a_star():
-    return render_template('a_star.html')
+    return render_template(
+        'a_star.html',
+        matrix=matrix,
+        h=heu,
+    )
 
 
 @app.route('/id3')
