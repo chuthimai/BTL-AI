@@ -43,7 +43,7 @@ table {
 }
 
 .image {
-    padding-top: 20px;
+    padding-top: 0px;
 }
 
 .submit {
@@ -51,7 +51,7 @@ table {
 }
 
 .scrollable {
-    height: 100px;
+    height: 90px;
     overflow-y: scroll;
     border: 1px solid #ccc;
     padding: 10px;
