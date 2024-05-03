@@ -8,7 +8,9 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 from algorithms.dfs import dfs_algorithms
+from algorithms.bfs import bfs_algorithms
 from algorithms.ida_star import ida_star_algorithms
+from algorithms.A_star import a_star_algorithm
 from models.draw_point import draw_point
 from models.get_data import get_matrix, get_heuristic, get_data_knn
 from models.point import print_route
@@ -111,19 +113,44 @@ def knn():
 
 @app.route('/bfs')
 def bfs():
+    global matrix
+    image = "../static/images/init.png"
+    result = ""
+    if request.method == "POST":
+        image = "../static/images/bfs.png"
+        matrix = get_matrix(request)
+        plt.close()
+        draw_point(plt=plt)
+        result = print_route(bfs_algorithms(matrix), plt=plt)
+        plt.savefig("./static/images/bfs.png")
+
     return render_template(
         'bfs.html',
+        image=image,
+        result=result,
         matrix=matrix,
     )
-
 
 @app.route('/a*')
 def a_star():
+    global matrix, heu
+    image = "../static/images/init.png"
+    result = ""
+    if request.method == "POST":
+        image = "../static/images/a_star.png"
+        matrix = get_matrix(request)
+        plt.close()
+        heu = get_heuristic(request)
+        result = a_star_algorithm(matrix, heu)
+        print(result)
+
     return render_template(
-        'a_star.html',
-        matrix=matrix,
-        h=heu,
-    )
+            'a_star.html',
+            image=image,
+            result=result,
+            matrix=matrix,
+            h=heu
+        )
 
 
 @app.route('/id3')
