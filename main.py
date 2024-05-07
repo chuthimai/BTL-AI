@@ -33,6 +33,7 @@ heu = [6, 4, 4, 3, 4, 1, 1, 0, 0]
 
 knn_input = (0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
 
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -70,7 +71,6 @@ def ida_star():
         plt.close()
         heu = get_heuristic(request)
         result = ida_star_algorithms(matrix, heu)
-        print(result)
 
     return render_template(
             'ida_star.html',
@@ -111,7 +111,7 @@ def knn():
 #-------------------------------------------------------------#
 
 
-@app.route('/bfs')
+@app.route('/bfs', methods=["POST", "GET"])
 def bfs():
     global matrix
     image = "../static/images/init.png"
@@ -131,7 +131,8 @@ def bfs():
         matrix=matrix,
     )
 
-@app.route('/a*')
+
+@app.route('/a_star', methods=["POST", "GET"])
 def a_star():
     global matrix, heu
     image = "../static/images/init.png"
@@ -142,7 +143,6 @@ def a_star():
         plt.close()
         heu = get_heuristic(request)
         result = a_star_algorithm(matrix, heu)
-        print(result)
 
     return render_template(
             'a_star.html',
@@ -153,7 +153,7 @@ def a_star():
         )
 
 
-@app.route('/id3')
+@app.route('/id3', methods=["POST", "GET"])
 def id3():
     return render_template('id3.html')
 

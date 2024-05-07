@@ -3,21 +3,6 @@ from matplotlib import pyplot as plt
 from models.draw_point import draw_point
 from models.point import Point, print_route, PointCost, find_min_point_cost
 
-# matrix_example = [
-#     [0, 2, 3, 0, 0, 0, 0, 0, 0],
-#     [0, 0, 0, 0, 3, 0, 0, 0, 0],
-#     [0, 0, 0, 3, 1, 0, 0, 0, 0],
-#     [0, 0, 0, 0, 0, 2, 0, 0, 0],
-#     [0, 0, 0, 1, 0, 0, 3, 0, 0],
-#     [0, 0, 0, 0, 0, 0, 0, 0, 1],
-#     [0, 0, 0, 0, 0, 0, 0, 0, 2],
-#     [0, 0, 0, 0, 0, 0, 0, 0, 0],
-#     [0, 0, 0, 0, 0, 0, 0, 0, 0]
-# ]
-
-
-# h = [6, 4, 4, 3, 4, 1, 1, 0, 0]
-
 
 def a_star_algorithm(matrix, heu, start=0, end=8):
     set_of_bound = []
@@ -46,9 +31,6 @@ def a_star_algorithm(matrix, heu, start=0, end=8):
             route.insert(0, open_point)
             r = print_route(list(map(lambda point_cost: point_cost.point, route)), plt=plt)
             plt.savefig("./static/images/a_star.png")
-            return f"route = {r} ➦ cost = {route[0].f}"
+            return f"Route: {r} ➦ cost = {route[0].f}"
 
     return "Not found result"
-
-
-# print(a_star_algorithm(matrix_example, heu=h))

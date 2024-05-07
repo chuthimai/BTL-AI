@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col-5">
                 <div class="row">
-                    <form action="" method="post" class="matrix">
+                    <form action="/bfs" method="post" class="matrix">
                         <div class="row submit">
                             <input type="submit" value="Show Route">
                         </div>
@@ -154,7 +154,11 @@
             </div>
             <div class="col-7 image">
                 <div class="position-fixed">
-                    <img src="../static/images/init.png" class="img-fluid">
+                    <img src="{{ image }}" class="img-fluid">
+                    <hr>
+                    <div class="scrollable">
+                        <h5>Route: {{ result }}</h5>
+                    </div>
                 </div>
             </div>
 
