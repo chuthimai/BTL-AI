@@ -117,7 +117,7 @@ def bfs():
     image = "../static/images/init.png"
     result = ""
     if request.method == "POST":
-        image = "../static/images/bfs.png"
+        image = "./static/images/bfs.png"
         matrix = get_matrix(request)
         plt.close()
         draw_point(plt=plt)
