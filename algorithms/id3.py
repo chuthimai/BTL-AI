@@ -13,7 +13,7 @@ def fun(t):
     res = []
     for _, e in t.iterrows():
         res.append(predict(d, e))
-        print(predict(d, e))
+        # print(predict(d, e))
     return res
 
 
@@ -23,7 +23,7 @@ def predict(d, e):
     e -- a testing example in form of pandas series
     """
     current_node = list(d.keys())[0]
-    print('curent node: ', current_node)
+    # print('curent node: ', current_node)
     current_branch = d[current_node][e[current_node]]
     # if leaf node value is string then its a decision
     if isinstance(current_branch, str):

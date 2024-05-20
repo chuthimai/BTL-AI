@@ -35,7 +35,7 @@ heu = [6, 4, 4, 3, 4, 1, 1, 0, 0]
 
 knn_input = (0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
 
-id3_input = ['Sunny', 'Mild', 'Normal', 'Strong']
+id3_input = ['', '', '', '']
 
 
 @app.route('/')
