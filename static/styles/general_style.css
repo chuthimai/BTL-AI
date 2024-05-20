@@ -57,6 +57,13 @@ table {
     padding: 10px;
 }
 
+.scrollable-play-tennis {
+    height: 8.5rem;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
 .matrix > .scrollable {
     width: 100px;
     height: 300px;

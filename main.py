@@ -4,6 +4,7 @@ import sklearn
 import pandas as pd
 import joblib
 import matplotlib
+
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
@@ -11,6 +12,7 @@ from algorithms.dfs import dfs_algorithms
 from algorithms.bfs import bfs_algorithms
 from algorithms.ida_star import ida_star_algorithms
 from algorithms.A_star import a_star_algorithm
+from algorithms.id3 import fun
 from models.draw_point import draw_point
 from models.get_data import get_matrix, get_heuristic, get_data_knn
 from models.point import print_route
@@ -32,6 +34,8 @@ matrix = [
 heu = [6, 4, 4, 3, 4, 1, 1, 0, 0]
 
 knn_input = (0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+
+id3_input = ['Sunny', 'Mild', 'Normal', 'Strong']
 
 
 @app.route('/')
@@ -73,12 +77,12 @@ def ida_star():
         result = ida_star_algorithms(matrix, heu)
 
     return render_template(
-            'ida_star.html',
-            image=image,
-            result=result,
-            matrix=matrix,
-            h=heu
-        )
+        'ida_star.html',
+        image=image,
+        result=result,
+        matrix=matrix,
+        h=heu
+    )
 
 
 @app.route('/knn', methods=["POST", "GET"])
@@ -108,7 +112,7 @@ def knn():
     )
 
 
-#-------------------------------------------------------------#
+# -------------------------------------------------------------#
 
 
 @app.route('/bfs', methods=["POST", "GET"])
@@ -145,17 +149,34 @@ def a_star():
         result = a_star_algorithm(matrix, heu)
 
     return render_template(
-            'a_star.html',
-            image=image,
-            result=result,
-            matrix=matrix,
-            h=heu
-        )
+        'a_star.html',
+        image=image,
+        result=result,
+        matrix=matrix,
+        h=heu
+    )
 
 
 @app.route('/id3', methods=["POST", "GET"])
 def id3():
-    return render_template('id3.html')
+    global id3_input
+    train_data = pd.read_csv("./data/id3/TrainPlayTennis.csv")
+    test_data = pd.read_csv("./data/id3/TestPlayTennis.csv")
+    result = [None]
+
+    if request.method == "POST":
+        values = request.values.to_dict()
+        id3_input = [values['outlook'], values['temperature'], values['humidity'], values['wind']]
+        df = pd.DataFrame(data=[id3_input],
+                          columns=['Outlook', 'Temperature', 'Humidity', 'Wind'])
+        result = fun(df)
+    return render_template(
+        'id3.html',
+        train_data=train_data.to_html(classes="table table-hover"),
+        test_data=test_data.to_html(classes="table table-hover"),
+        result=result[0],
+        id3_input=id3_input,
+    )
 
 
 if __name__ == "__main__":

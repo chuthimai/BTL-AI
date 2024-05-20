@@ -16,5 +16,138 @@
         <a href="{{url_for('id3')}}" class="select">ID3</a>
         <a href="{{url_for('knn')}}">KNN</a>
     </nav>
+
+     <div class="container position-fixed m-3">
+        <div class="row">
+            <div class="col-6 matrix">
+                <div class="scrollable" style="height: auto; width: 100%;">
+                    <div class="row">
+                        <h3>Data Train</h3>
+                        <div class="scrollable-play-tennis">
+                            {{ train_data | safe}}
+                        </div>
+                        <h3>Data Test</h3>
+                        <div class="scrollable-play-tennis">
+                            {{ test_data | safe}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <form action="/id3" method="post">
+                            <h3>Input Data</h3>
+                            <div class="scrollable" style="height: 100px;">
+                                <table class="table table-hover">
+                                    <tr>
+                                        <td class="label">Outlook</td>
+                                        <td class="label">Temperature</td>
+                                        <td class="label">Humidity</td>
+                                        <td class="label">Wind</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <select name="outlook" id="outlook-select">
+                                                <option value="">Select</option>
+                                                {% if id3_input[0] == 'Sunny': %}
+                                                <option value="Sunny" selected>Sunny</option>
+                                                {% else %}
+                                                <option value="Sunny">Sunny</option>
+                                                {% endif %}
+
+                                                {% if id3_input[0] == 'Overcast': %}
+                                                <option value="Overcast" selected>Overcast</option>
+                                                {% else %}
+                                                <option value="Overcast">Overcast</option>
+                                                {% endif %}
+
+                                                {% if id3_input[0] == 'Rain': %}
+                                                <option value="Rain" selected>Rain</option>
+                                                {% else %}
+                                                <option value="Rain">Rain</option>
+                                                {% endif %}
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select name="temperature" id="temperature-select">
+                                                <option value="">Select</option>
+
+                                                {% if id3_input[1] == 'Hot': %}
+                                                <option value="Hot" selected>Hot</option>
+                                                {% else %}
+                                                <option value="Hot">Hot</option>
+                                                {% endif %}
+
+                                                {% if id3_input[1] == 'Mild': %}
+                                                <option value="Mild" selected>Mild</option>
+                                                {% else %}
+                                                 <option value="Mild">Mild</option>
+                                                {% endif %}
+
+                                                {% if id3_input[1] == 'Cool': %}
+                                                <option value="Cool" selected>Cool</option>
+                                                {% else %}
+                                                <option value="Cool">Cool</option>
+                                                {% endif %}
+
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select name="humidity" id="humidity-select">
+                                                <option value="">Select</option>
+
+                                                {% if id3_input[2] == 'High': %}
+                                                <option value="High" selected>High</option>
+                                                {% else %}
+                                                <option value="High">High</option>
+                                                {% endif %}
+
+                                                {% if id3_input[2] == 'Normal': %}
+                                                <option value="Normal" selected>Normal</option>
+                                                {% else %}
+                                                <option value="Normal">Normal</option>
+                                                {% endif %}
+
+
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select name="wind" id="wind-select">
+                                                <option value="">Select</option>
+
+                                                {% if id3_input[3] == 'Weak': %}
+                                                <option value="Weak" selected>Weak</option>
+                                                {% else %}
+                                                <option value="Weak">Weak</option>
+                                                {% endif %}
+
+                                                {% if id3_input[3] == 'Strong': %}
+                                                <option value="Strong" selected>Strong</option>
+                                                {% else %}
+                                                <option value="Strong">Strong</option>
+                                                {% endif %}
+
+                                            </select>
+                                        </td>
+
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="row submit">
+                                <input type="submit" value="Show Result">
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-6 image">
+                <div class="position-fixed">
+                    <img src="../static/images/id3.png" class="img-fluid">
+                    <hr>
+                    <h3>Play Tennis: {{ result }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
